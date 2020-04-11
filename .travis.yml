@@ -1,0 +1,6 @@
+sudo: required
+services: 
+- docker
+
+before_install:
+ - docker build -t web20 -f Dockerfile.dev .
