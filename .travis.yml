@@ -4,3 +4,6 @@ services:
 
 before_install:
  - docker build -t web20 -f Dockerfile.dev .
+
+ script:
+  - docker run web20 npm run test -- --coverage
