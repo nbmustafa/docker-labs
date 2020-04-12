@@ -6,8 +6,6 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
-    //"test": "mocha"
-
   },
   "dependencies": {
     "express": "*"
