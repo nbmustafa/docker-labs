@@ -1,30 +1,11 @@
-# FROM node:10
-
-# if ou choose node, you dont need to install nodejs because its alredy isntalled
-FROM node:alpine
-
-# ARG name=defaultValue
-# ARG name=defaultValue
-
-# ENV key=value
-# ENV key=value
-
-# Create app directory
+FROM node:alpine as builder
 WORKDIR '/app'
-
-# Copy package
-COPY package*.json ./
-
-# Install some Dependicies
+COPY ./package.json ./
 RUN npm install
-
-COPY . ./
-
+COPY . .
 RUN npm run build
 
 FROM nginx
-COPY --from=builder /app/build/ /usr/share/nginx
-
-
-# EXPOSE 80
-# CMD [ "npm", "run", "start" ]
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
