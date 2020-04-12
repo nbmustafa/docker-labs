@@ -5,7 +5,9 @@
   "author": "Nashwan Mustafa <Nashwan.mustaf@cloudkurd.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
+
   },
   "dependencies": {
     "express": "*"
